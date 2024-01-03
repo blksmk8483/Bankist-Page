@@ -1,7 +1,7 @@
 'use strict';
 
 ///////////////////////////////////////
-// Modal window
+// MODAL WINDOW
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -31,3 +31,44 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+console.log('Selecting, Creating, and Deleting Elements');
+
+// Selecting elements
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+document.getElementById('section--1');
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+
+// Creating and inserting elements
+// .insertAdjacentHTML
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent =
+//   'We use cookies for improved functionality and analytics.';
+message.innerHTML =
+  'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+
+// header.prepend(message);
+header.append(message);
+
+// Delete Elements
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
