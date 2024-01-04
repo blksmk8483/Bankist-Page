@@ -1,6 +1,9 @@
 'use strict';
 
 ///////////////////////////////////////
+// --------   MODAL WINDOW   --------
+///////////////////////////////////////
+
 // MODAL WINDOW
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -31,6 +34,19 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+///////////////////////////////////////
+// --------   SMOOTH SCROLLING   --------
+///////////////////////////////////////
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+// --------   PRACTICE HAS NOTHING TO DO WITH THE PROJECT   --------
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -94,7 +110,7 @@ console.log(getComputedStyle(message).height);
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
@@ -115,3 +131,34 @@ logo.classList.add('c');
 logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+// Very old school way of doing this just to know....
+// btnScrollTo.addEventListener('click', function (e) {
+//   const s1coords = section1.getBoundingClientRect();
+//   console.log(s1coords);
+
+//   console.log(e.target.getBoundingClientRect());
+
+//   // Scrolling
+//   // window.scrollTo(
+//   //   s1coords.left + window.pageXOffset,
+//   //   s1coords.top + window.pageYOffset
+//   // );
+
+//   window.scrollTo({
+//     left: s1coords.left + window.pageXOffset,
+//     top: s1coords.top + window.pageYOffset,
+//     behavior: 'smooth',
+//   });
+// });
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+console.log('Types of Events and Event Handlers');
