@@ -126,6 +126,17 @@ nav.addEventListener('mouseout', function (e) {
   handleOver(e, 1);
 });
 
+///////////////////////////////////////
+// --------   STICKY NAVIGATION   --------
+///////////////////////////////////////
+
+const intialCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function (e) {
+  if (window.scrollY > intialCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
+
 // --------   PRACTICE HAS NOTHING TO DO WITH THE PROJECT   --------
 
 ////////////////////////////////////////////////////////////////////////////
