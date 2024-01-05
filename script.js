@@ -74,6 +74,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 // --------   TABBED COMPONENT   --------
 // --------   OPERATIONS PAGE   --------
 ///////////////////////////////////////
+// section 13_#194
 
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
@@ -96,6 +97,35 @@ tabsContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+///////////////////////////////////////
+// --------   NAVBAR ACTIONS   --------
+///////////////////////////////////////
+
+// menu fade animation
+const nav = document.querySelector('.nav');
+
+const handleOver = function (e, opacity) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = opacity;
+    });
+    logo.style.opacity = opacity;
+  }
+};
+
+nav.addEventListener('mouseover', function (e) {
+  handleOver(e, 0.5);
+});
+
+nav.addEventListener('mouseout', function (e) {
+  handleOver(e, 1);
+});
+
 // --------   PRACTICE HAS NOTHING TO DO WITH THE PROJECT   --------
 
 ////////////////////////////////////////////////////////////////////////////
