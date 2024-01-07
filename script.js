@@ -159,7 +159,6 @@ const allSections = document.querySelectorAll('.section');
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
 
   if (!entry.isIntersecting) return;
   entry.target.classList.remove('section--hidden');
@@ -175,6 +174,36 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 });
+
+///////////////////////////////////////
+// --------   LAZY LOADING IMAGES   --------
+///////////////////////////////////////
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (!entry.isIntersecting) return;
+
+  // Replace src with data-src
+  entry.target.src = entry.target.dataset.src;
+
+  // the load event happens when the whole page has loaded including images. - for this we have a larger image loading and want to wait taking away the lazy-img which keeps it blurred until it is done loading the real image
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const imbObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+
+imgTargets.forEach(img => imbObserver.observe(img));
 
 // --------   PRACTICE HAS NOTHING TO DO WITH THE PROJECT   --------
 
