@@ -130,12 +130,46 @@ nav.addEventListener('mouseout', function (e) {
 // --------   STICKY NAVIGATION   --------
 ///////////////////////////////////////
 
-const intialCoords = section1.getBoundingClientRect();
+// const intialCoords = section1.getBoundingClientRect();
 
-window.addEventListener('scroll', function (e) {
-  if (window.scrollY > intialCoords.top) nav.classList.add('sticky');
+// window.addEventListener('scroll', function (e) {
+//   if (window.scrollY > intialCoords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// });
+
+// Sticky navigation: Intersection Observer API
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+// const obsOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky'), message.remove();
   else nav.classList.remove('sticky');
+};
+
+// the rootMargin is the same heigh as the navbar
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
 });
+headerObserver.observe(header);
 
 // --------   PRACTICE HAS NOTHING TO DO WITH THE PROJECT   --------
 
@@ -150,8 +184,8 @@ window.addEventListener('scroll', function (e) {
 // console.log(document.head);
 // console.log(document.body);
 
-const header = document.querySelector('.header');
-// const allSections = document.querySelectorAll('.section');
+// const header = document.querySelector('.header');
+// // const allSections = document.querySelectorAll('.section');
 // console.log(allSections);
 
 // document.getElementById('section--1');
@@ -174,7 +208,7 @@ message.innerHTML =
 header.append(message);
 
 // Delete Elements
-document
+const gotIt = document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', function () {
     message.remove();
