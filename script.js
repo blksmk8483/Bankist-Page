@@ -469,12 +469,16 @@ logo.getAttribute('src');
 //   if (el !== h1) el.style.transform = 'scale(0.5';
 // });
 
-// Youtube:
-// Fireship by nikkiandchris.io
-// Programming with Mosh
-// FreeCodeCamp
-// Developed By Ed
-// Web Dev Simplified
-// The Net Ninja
-// Traversy Media
-// Udemy
+// document.addEventListener('DOMContentLoaded', function (e) {
+//   console.log('HTML parsed and DOM tree built!', e);
+// });
+
+// window.addEventListener('load', function (e) {
+//   console.log('Page fully loaded', e);
+// });
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
